@@ -9,7 +9,7 @@ from aiida.engine import CalcJob
 from aiida.orm import SinglefileData
 from aiida.plugins import DataFactory
 
-DiffParameters = DataFactory('diff')
+DiffParameters = DataFactory("diff")
 
 
 class DiffCalculation(CalcJob):
@@ -25,31 +25,31 @@ class DiffCalculation(CalcJob):
         super().define(spec)
 
         # set default values for AiiDA options
-        spec.inputs['metadata']['options']['resources'].default = {
-            'num_machines': 1,
-            'num_mpiprocs_per_machine': 1,
+        spec.inputs["metadata"]["options"]["resources"].default = {
+            "num_machines": 1,
+            "num_mpiprocs_per_machine": 1,
         }
-        spec.inputs['metadata']['options']['parser_name'].default = 'diff'
+        spec.inputs["metadata"]["options"]["parser_name"].default = "diff"
 
         # new ports
-        spec.input('metadata.options.output_filename', valid_type=str, default='patch.diff')
+        spec.input("metadata.options.output_filename", valid_type=str, default="patch.diff")
         spec.input(
-            'parameters',
+            "parameters",
             valid_type=DiffParameters,
-            help='Command line parameters for diff',
+            help="Command line parameters for diff",
         )
-        spec.input('file1', valid_type=SinglefileData, help='First file to be compared.')
-        spec.input('file2', valid_type=SinglefileData, help='Second file to be compared.')
+        spec.input("file1", valid_type=SinglefileData, help="First file to be compared.")
+        spec.input("file2", valid_type=SinglefileData, help="Second file to be compared.")
         spec.output(
-            'diff',
+            "diff",
             valid_type=SinglefileData,
-            help='diff between file1 and file2.',
+            help="diff between file1 and file2.",
         )
 
         spec.exit_code(
             300,
-            'ERROR_MISSING_OUTPUT_FILES',
-            message='Calculation did not produce all expected output files.',
+            "ERROR_MISSING_OUTPUT_FILES",
+            message="Calculation did not produce all expected output files.",
         )
 
     def prepare_for_submission(self, folder):

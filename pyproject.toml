@@ -65,9 +65,6 @@ source = ["src/aiida_diff"]
 [tool.ruff]
 line-length = 120
 
-[tool.ruff.format]
-quote-style = 'single'
-
 [tool.ruff.lint]
 ignore = [
   'F403',  # Star imports unable to detect undefined names
