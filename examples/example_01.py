@@ -22,9 +22,7 @@ def test_run(diff_code):
     if not diff_code:
         # get code
         computer = helpers.get_computer()
-        diff_code = helpers.get_code(
-            entry_point='diff', computer=computer
-        )
+        diff_code = helpers.get_code(entry_point='diff', computer=computer)
 
     # Prepare input parameters
     diff_parameters = DataFactory('diff')
