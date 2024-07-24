@@ -138,7 +138,7 @@ lint-check = "ruff check --config pyproject.toml {args:.}"
 lint-fix = "ruff check --config pyproject.toml --fix --exit-non-zero-on-fix --show-fixes {args:.}"
 
 [tool.hatch.envs.docs]
-features = "docs"
+features = ["docs"]
 
 [tool.hatch.envs.docs.scripts]
 build = [
